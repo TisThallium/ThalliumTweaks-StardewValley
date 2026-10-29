@@ -18,7 +18,8 @@ namespace ThalliumTweaks
                 // all tweaks go here
                 new NoCaveEnergyLoss(() => this.Config),
                 new PetBowlAutoFill(() => this.Config),
-                new TreeSeedGuarantee(() => this.Config)
+                new TreeSeedGuarantee(() => this.Config),
+                new TimeSpeed(() => this.Config)
             };
 
             foreach (ITweak tweak in tweaks)
@@ -72,6 +73,56 @@ namespace ThalliumTweaks
                 setValue: value => this.Config.TreeSeedGuarantee = value,
                 name: () => "Tree Seed Guarantee",
                 tooltip: () => "Chopping down a fully grown tree always drops a seed."
+            );
+
+            gmcm.AddSectionTitle(this.ModManifest, () => "Time Speed");
+
+            gmcm.AddBoolOption(
+                mod: this.ModManifest,
+                getValue: () => this.Config.TimeSpeed,
+                setValue: value => this.Config.TimeSpeed = value,
+                name: () => "Enable Time Speed",
+                tooltip: () => "Change how fast time passes, depending on where you are."
+            );
+
+            gmcm.AddNumberOption(
+                mod: this.ModManifest,
+                getValue: () => this.Config.TimeSpeedFarm,
+                setValue: value => this.Config.TimeSpeedFarm = value,
+                name: () => "Farm & Farm Buildings",
+                tooltip: () => "1 = normal, 2 = twice as fast, 0.5 = half as fast, 0 = time frozen.",
+                min: 0f, max: 5f, interval: 0.1f,
+                formatValue: v => v == 0f ? "Frozen" : $"{v:0.0}x"
+            );
+
+            gmcm.AddNumberOption(
+                mod: this.ModManifest,
+                getValue: () => this.Config.TimeSpeedMines,
+                setValue: value => this.Config.TimeSpeedMines = value,
+                name: () => "Mines & Skull Cavern",
+                tooltip: () => "1 = normal, 2 = twice as fast, 0.5 = half as fast, 0 = time frozen.",
+                min: 0f, max: 5f, interval: 0.1f,
+                formatValue: v => v == 0f ? "Frozen" : $"{v:0.0}x"
+            );
+
+            gmcm.AddNumberOption(
+                mod: this.ModManifest,
+                getValue: () => this.Config.TimeSpeedOutdoors,
+                setValue: value => this.Config.TimeSpeedOutdoors = value,
+                name: () => "Other Outdoor Areas",
+                tooltip: () => "Town, Forest, Beach, Mountain, and so on.",
+                min: 0f, max: 5f, interval: 0.1f,
+                formatValue: v => v == 0f ? "Frozen" : $"{v:0.0}x"
+            );
+
+            gmcm.AddNumberOption(
+                mod: this.ModManifest,
+                getValue: () => this.Config.TimeSpeedIndoors,
+                setValue: value => this.Config.TimeSpeedIndoors = value,
+                name: () => "Other Indoor Areas",
+                tooltip: () => "Shops, houses, and other indoor locations.",
+                min: 0f, max: 5f, interval: 0.1f,
+                formatValue: v => v == 0f ? "Frozen" : $"{v:0.0}x"
             );
         }
     }

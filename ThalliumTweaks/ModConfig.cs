@@ -6,6 +6,11 @@
         public bool PetBowlAutoFill { get; set; } = true;
         public bool TreeSeedGuarantee { get; set; } = true;
 
-        // add each tweak to the config menu here
+        // Time configuration
+        public bool TimeSpeed { get; set; } = true;
+        public float TimeSpeedFarm { get; set; } = 1.0f;
+        public float TimeSpeedMines { get; set; } = 1.0f;
+        public float TimeSpeedOutdoors { get; set; } = 1.0f;
+        public float TimeSpeedIndoors { get; set; } = 1.0f;
     }
 }
