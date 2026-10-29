@@ -1,0 +1,15 @@
+﻿{
+	"Name": "Thallium Tweaks",
+	"Author": "Thallium",
+	"Version": "1.0.0",
+	"Description": "Adds Various Togglable Tweaks To Stardew Valley",
+	"UniqueID": "Thallium.ThalliumTweaks",
+	"EntryDll": "ThalliumTweaks.dll",
+	"MinimumApiVersion": "4.0.0",
+	"Dependencies": [
+		{
+			"UniqueID": "spacechase0.GenericModConfigMenu",
+			"IsRequired": false
+		}
+	]
+}
