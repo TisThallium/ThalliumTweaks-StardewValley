@@ -63,21 +63,12 @@ namespace ThalliumTweaks.Tweaks
 
             float speed =
                 location is MineShaft ? config.TimeSpeedMines
-                : IsFarmArea(location) ? config.TimeSpeedFarm
+                : LocationUtils.IsFarmArea(location) ? config.TimeSpeedFarm
                 : location.IsOutdoors ? config.TimeSpeedOutdoors
                 : config.TimeSpeedIndoors;
 
             // guards against bad values typed into config.json
             return Math.Clamp(speed, 0f, 10f);
-        }
-
-        private static bool IsFarmArea(GameLocation location)
-        {
-            return location.IsFarm
-                || location is FarmHouse   // includes cabins
-                || location is Cellar
-                || location.IsGreenhouse
-                || location.ParentBuilding != null;   // barns, coops, sheds, etc.
         }
     }
 }

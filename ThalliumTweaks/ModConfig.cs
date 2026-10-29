@@ -5,6 +5,7 @@
         public bool NoCaveEnergyLoss { get; set; } = true;
         public bool PetBowlAutoFill { get; set; } = true;
         public bool TreeSeedGuarantee { get; set; } = true;
+        public bool NoPassOutPenaltyOnFarm { get; set; } = true;
 
         // Time configuration
         public bool TimeSpeed { get; set; } = true;

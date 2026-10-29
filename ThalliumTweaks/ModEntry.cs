@@ -19,6 +19,7 @@ namespace ThalliumTweaks
                 new NoCaveEnergyLoss(() => this.Config),
                 new PetBowlAutoFill(() => this.Config),
                 new TreeSeedGuarantee(() => this.Config),
+                new NoPassOutPenaltyOnFarm(() => this.Config),
                 new TimeSpeed(() => this.Config)
             };
 
@@ -73,6 +74,14 @@ namespace ThalliumTweaks
                 setValue: value => this.Config.TreeSeedGuarantee = value,
                 name: () => "Tree Seed Guarantee",
                 tooltip: () => "Chopping down a fully grown tree always drops a seed."
+            );
+
+            gmcm.AddBoolOption(
+                mod: this.ModManifest,
+                getValue: () => this.Config.NoPassOutPenaltyOnFarm,
+                setValue: value => this.Config.NoPassOutPenaltyOnFarm = value,
+                name: () => "No Pass-Out Fee on Farm",
+                tooltip: () => "Passing out on your farm or inside your farm buildings costs no gold."
             );
 
             gmcm.AddSectionTitle(this.ModManifest, () => "Time Speed");
