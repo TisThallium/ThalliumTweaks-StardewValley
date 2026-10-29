@@ -4,8 +4,8 @@
     {
         public bool NoCaveEnergyLoss { get; set; } = true;
         public bool PetBowlAutoFill { get; set; } = true;
+        public bool TreeSeedGuarantee { get; set; } = true;
 
-        // future tweaks: add one line each, for example:
-        // public bool SomeOtherTweak { get; set; } = true;
+        // add each tweak to the config menu here
     }
 }

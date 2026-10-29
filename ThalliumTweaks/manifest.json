@@ -1,7 +1,7 @@
 ﻿{
 	"Name": "Thallium Tweaks",
 	"Author": "Thallium",
-	"Version": "1.0.0",
+	"Version": "1.1.0",
 	"Description": "Adds Various Togglable Tweaks To Stardew Valley",
 	"UniqueID": "Thallium.ThalliumTweaks",
 	"EntryDll": "ThalliumTweaks.dll",

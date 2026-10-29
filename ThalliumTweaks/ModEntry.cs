@@ -17,7 +17,8 @@ namespace ThalliumTweaks
             {
                 // all tweaks go here
                 new NoCaveEnergyLoss(() => this.Config),
-                new PetBowlAutoFill(() => this.Config)
+                new PetBowlAutoFill(() => this.Config),
+                new TreeSeedGuarantee(() => this.Config)
             };
 
             foreach (ITweak tweak in tweaks)
@@ -39,7 +40,12 @@ namespace ThalliumTweaks
             gmcm.Register(
                 mod: this.ModManifest,
                 reset: () => this.Config = new ModConfig(),
-                save: () => this.Helper.WriteConfig(this.Config)
+                save: () =>
+                {
+                    this.Helper.WriteConfig(this.Config);
+                    // make the game reload data that the tweaks edit
+                    this.Helper.GameContent.InvalidateCache("Data/WildTrees");
+                }
             );
 
             gmcm.AddSectionTitle(this.ModManifest, () => "Tweaks");
@@ -58,6 +64,14 @@ namespace ThalliumTweaks
                 setValue: value => this.Config.PetBowlAutoFill = value,
                 name: () => "Pet Bowl Auto-Fill",
                 tooltip: () => "The pet bowl is automatically filled each day."
+            );
+
+            gmcm.AddBoolOption(
+                mod: this.ModManifest,
+                getValue: () => this.Config.TreeSeedGuarantee,
+                setValue: value => this.Config.TreeSeedGuarantee = value,
+                name: () => "Tree Seed Guarantee",
+                tooltip: () => "Chopping down a fully grown tree always drops a seed."
             );
         }
     }
